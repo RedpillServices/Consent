@@ -1,0 +1,295 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+        <title>Consent</title>
+        <script src="js/jquery-1.11.2/jquery-1.11.2.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+        <link rel="stylesheet" href="css/styles.css" />
+    </head> 
+    <body>
+        <script>
+        $(document).on("pagebeforeshow","#page-consent",function(){
+  alert("pagetwo is about to be shown");
+});
+</script>
+        <div data-role="page" id="page-main">
+            <div class="absolute-header" data-id="main-header" data-role="header">
+                <h1><a href="#main-panel"><img class="menu-consent" src="consent.png"></a>Consent</h1>
+            </div>
+            <div class="content" data-role="content">
+                <div data-role="fieldcontain">
+                    <h3 class="select center-h3">I am a:</h3>
+                    <select name="sex" id="sex">
+                        <option value="female">Woman</option>
+                        <option value="male">Man</option>
+                    </select>
+                </div>
+                <div data-role="fieldcontain">
+                    <h3 class="select center-h3">My partner is a:</h3>
+                    <select name="partner-sex" id="partner-sex">
+                        <option value="female">Woman</option>
+                        <option value="male">Man</option>
+                    </select>
+                </div>
+                <a href="#page-consent" data-role="button">Let's Consent!</a>
+                <script>
+                    if (typeof localStorage.me !== "undefined") {
+                        $("#sex").val(localStorage.me);
+                    }
+                    if (typeof localStorage.partner !== "undefined") {
+                        $("#partner-sex").val(localStorage.partner);
+                    }
+
+                    $("#page-main").on("change", "#sex", function(event) {
+                        localStorage.setItem("me", $("#sex").val());
+                        console.log(localStorage.me);
+                    });
+                    $("#page-main").on("change", "#partner-sex", function(event) {
+                        localStorage.setItem("partner", $("#partner-sex").val());
+                    });
+                </script>
+            </div>
+        </div>
+        <div data-role="page" id="page-consent">
+            <div class="absolute-header" data-id="main-header" data-role="header">
+                <h1><a href="#main-panel"><img class="menu-consent" src="consent.png"></a>Consent</h1>
+            </div>
+            <div class="content" data-role="content">
+                <h3 class='center-h3'>Myself:</h3>
+                <div id='myself'>
+                </div>
+                <h3 class='center-h3'>Partner:</h3>
+                <div id='partner'>
+                </div>
+            </div>
+            <script>
+                function consent() {
+                    console.log(localStorage);
+                    if (localStorage.me === "male" && localStorage.partner === "female") {
+                        $("#myself").append('<div data-role="collapsible" id="sex-me"><h3>Sex</h3><div data-role="fieldcontain"><fieldset id="controlgroup-sex-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" /><label for="checkbox-1">Missionary</label>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-2" id="checkbox-2" class="custom" /><label for="checkbox-2">Doggy Style</label>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-3" id="checkbox-3" class="custom" /><label for="checkbox-3">Girl-on-Top</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="oral-me"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-4" id="checkbox-4" class="custom" /><label for="checkbox-4">Blow Job</label>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-5" id="checkbox-5" class="custom" /><label for="checkbox-5">Ball Sucking</label>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-6" id="checkbox-6" class="custom" /><label for="checkbox-6">Biting</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="giving-me"><h3>Oral (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-7" id="checkbox-7" class="custom" /><label for="checkbox-7">Eating Out</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="anal-me"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-8" id="checkbox-8" class="custom" /><label for="checkbox-8">Anal Sex</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-9" id="checkbox-9" class="custom" /><label for="checkbox-9">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-35" id="checkbox-35" class="custom" /><label for="checkbox-35">Rimming (giving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-10" id="checkbox-10" class="custom" /><label for="checkbox-10">Pegging</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-37" id="checkbox-37" class="custom" /><label for="checkbox-37">Toys</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="bdsm-me"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-11" id="checkbox-11" class="custom" /><label for="checkbox-11">Spanking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-12" id="checkbox-12" class="custom" /><label for="checkbox-12">Slapping</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-13" id="checkbox-13" class="custom" /><label for="checkbox-13">Choking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-14" id="checkbox-14" class="custom" /><label for="checkbox-14">Blind Fold</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-15" id="checkbox-15" class="custom" /><label for="checkbox-15">Tying Up</label>');
+
+
+                        $("#partner").append('<div data-role="collapsible" id="sex-partner"><h3>Sex</h3><div data-role="fieldcontain"><fieldset id="controlgroup-sex-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" name="checkbox-16" id="checkbox-16" class="custom" /><label for="checkbox-16">Missionary</label>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" name="checkbox-17" id="checkbox-17" class="custom" /><label for="checkbox-17">Doggy Style</label>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" name="checkbox-18" id="checkbox-18" class="custom" /><label for="checkbox-18">Girl-on-Top</label>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" name="checkbox-19" id="checkbox-19" class="custom" /><label for="checkbox-19">Toys</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="oral-partner"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" name="checkbox-20" id="checkbox-20" class="custom" /><label for="checkbox-20">Eating Out</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="anal-partner"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" name="checkbox-21" id="checkbox-21" class="custom" /><label for="checkbox-21">Anal Sex</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" name="checkbox-22" id="checkbox-22" class="custom" /><label for="checkbox-22">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" name="checkbox-34" id="checkbox-34" class="custom" /><label for="checkbox-34">Rimming (giving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" name="checkbox-23" id="checkbox-23" class="custom" /><label for="checkbox-23">Toys</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="giving-partner"><h3>Oral (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" name="checkbox-24" id="checkbox-24" class="custom" /><label for="checkbox-24">Blow Job</label>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" name="checkbox-25" id="checkbox-25" class="custom" /><label for="checkbox-25">Ball Sucking</label>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" name="checkbox-26" id="checkbox-26" class="custom" /><label for="checkbox-26">Biting</label>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" name="checkbox-27" id="checkbox-27" class="custom" /><label for="checkbox-27">Deepthroat</label>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" name="checkbox-28" id="checkbox-28" class="custom" /><label for="checkbox-28">Cum on Face</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="bdsm-partner"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" name="checkbox-29" id="checkbox-29" class="custom" /><label for="checkbox-29">Spanking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" name="checkbox-30" id="checkbox-30" class="custom" /><label for="checkbox-30">Slapping</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" name="checkbox-31" id="checkbox-31" class="custom" /><label for="checkbox-31">Choking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" name="checkbox-32" id="checkbox-32" class="custom" /><label for="checkbox-32">Blind Fold</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" name="checkbox-33" id="checkbox-33" class="custom" /><label for="checkbox-33">Tying Up</label>');
+
+                    }
+                    else if (localStorage.me === "female" && localStorage.partner === "male") {
+                        $("#myself").append('<div data-role="collapsible" id="sex-me"><h3>Sex</h3><div data-role="fieldcontain"><fieldset id="controlgroup-sex-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-16" id="checkbox-16" class="custom" /><label for="checkbox-16">Missionary</label>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-17" id="checkbox-17" class="custom" /><label for="checkbox-17">Doggy Style</label>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-18" id="checkbox-18" class="custom" /><label for="checkbox-18">Girl-on-Top</label>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-19" id="checkbox-19" class="custom" /><label for="checkbox-19">Toys</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="oral-me"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-20" id="checkbox-20" class="custom" /><label for="checkbox-20">Eating Out</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="anal-me"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-21" id="checkbox-21" class="custom" /><label for="checkbox-21">Anal Sex</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-22" id="checkbox-22" class="custom" /><label for="checkbox-22">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-34" id="checkbox-34" class="custom" /><label for="checkbox-34">Rimming (giving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-23" id="checkbox-23" class="custom" /><label for="checkbox-23">Toys</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="giving-me"><h3>Oral (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-24" id="checkbox-24" class="custom" /><label for="checkbox-24">Blow Job</label>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-25" id="checkbox-25" class="custom" /><label for="checkbox-25">Ball Sucking</label>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-26" id="checkbox-26" class="custom" /><label for="checkbox-26">Biting</label>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-27" id="checkbox-27" class="custom" /><label for="checkbox-27">Deepthroat</label>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-28" id="checkbox-28" class="custom" /><label for="checkbox-28">Cum on Face</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="bdsm-me"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-29" id="checkbox-29" class="custom" /><label for="checkbox-29">Spanking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-30" id="checkbox-30" class="custom" /><label for="checkbox-30">Slapping</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-31" id="checkbox-31" class="custom" /><label for="checkbox-31">Choking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-32" id="checkbox-32" class="custom" /><label for="checkbox-32">Blind Fold</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-33" id="checkbox-33" class="custom" /><label for="checkbox-33">Tying Up</label>');
+                        
+                                                $("#partner").append('<div data-role="collapsible" id="sex-partner"><h3>Sex</h3><div data-role="fieldcontain"><fieldset id="controlgroup-sex-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" napartner="checkbox-1" id="checkbox-1" class="custom" /><label for="checkbox-1">Missionary</label>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" napartner="checkbox-2" id="checkbox-2" class="custom" /><label for="checkbox-2">Doggy Style</label>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" napartner="checkbox-3" id="checkbox-3" class="custom" /><label for="checkbox-3">Girl-on-Top</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="oral-partner"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-4" id="checkbox-4" class="custom" /><label for="checkbox-4">Blow Job</label>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-5" id="checkbox-5" class="custom" /><label for="checkbox-5">Ball Sucking</label>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-6" id="checkbox-6" class="custom" /><label for="checkbox-6">Biting</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="giving-partner"><h3>Oral (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" napartner="checkbox-7" id="checkbox-7" class="custom" /><label for="checkbox-7">Eating Out</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="anal-partner"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-8" id="checkbox-8" class="custom" /><label for="checkbox-8">Anal Sex</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-9" id="checkbox-9" class="custom" /><label for="checkbox-9">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-35" id="checkbox-35" class="custom" /><label for="checkbox-35">Rimming (giving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-10" id="checkbox-10" class="custom" /><label for="checkbox-10">Pegging</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-37" id="checkbox-37" class="custom" /><label for="checkbox-37">Toys</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="bdsm-partner"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-11" id="checkbox-11" class="custom" /><label for="checkbox-11">Spanking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-12" id="checkbox-12" class="custom" /><label for="checkbox-12">Slapping</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-13" id="checkbox-13" class="custom" /><label for="checkbox-13">Choking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-14" id="checkbox-14" class="custom" /><label for="checkbox-14">Blind Fold</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-15" id="checkbox-15" class="custom" /><label for="checkbox-15">Tying Up</label>');
+
+                    }
+                    if (localStorage.partner === "male" && localStorage.me === "male") {
+
+                        $("#myself").append('<div data-role="collapsible" id="anal-me"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" /><label for="checkbox-1">Anal Sex (top)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-2" id="checkbox-2" class="custom" /><label for="checkbox-2">Anal Sex (bottom)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-3" id="checkbox-3" class="custom" /><label for="checkbox-3">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-4" id="checkbox-4" class="custom" /><label for="checkbox-4">Rimming (giving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-5" id="checkbox-5" class="custom" /><label for="checkbox-5">Toys</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="oral-me"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-6" id="checkbox-6" class="custom" /><label for="checkbox-6">Blow Job</label>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-7" id="checkbox-7" class="custom" /><label for="checkbox-7">Ball Sucking</label>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-8" id="checkbox-8" class="custom" /><label for="checkbox-8">Biting</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="giving-me"><h3>Oral (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-9" id="checkbox-9" class="custom" /><label for="checkbox-9">Blow Job</label>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-10" id="checkbox-10" class="custom" /><label for="checkbox-10">Ball Sucking</label>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-11" id="checkbox-11" class="custom" /><label for="checkbox-11">Biting</label>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-12" id="checkbox-12" class="custom" /><label for="checkbox-12">Deepthroat</label>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-13" id="checkbox-13" class="custom" /><label for="checkbox-13">Cum on Face</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="bdsm-me"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-14" id="checkbox-14" class="custom" /><label for="checkbox-14">Spanking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-15" id="checkbox-15" class="custom" /><label for="checkbox-15">Slapping</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-16" id="checkbox-16" class="custom" /><label for="checkbox-16">Choking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-17" id="checkbox-17" class="custom" /><label for="checkbox-17">Blind Fold</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-18" id="checkbox-18" class="custom" /><label for="checkbox-18">Tying Up</label>');
+
+
+                        $("#partner").append('<div data-role="collapsible" id="anal-partner"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-19" id="checkbox-19" class="custom" /><label for="checkbox-19">Anal Sex (top)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-20" id="checkbox-20" class="custom" /><label for="checkbox-20">Anal Sex (bottom)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-21" id="checkbox-21" class="custom" /><label for="checkbox-21">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-22" id="checkbox-22" class="custom" /><label for="checkbox-22">Rimming (giving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-23" id="checkbox-23" class="custom" /><label for="checkbox-23">Toys</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="oral-partner"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-24" id="checkbox-24" class="custom" /><label for="checkbox-24">Blow Job</label>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-25" id="checkbox-25" class="custom" /><label for="checkbox-25">Ball Sucking</label>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-26" id="checkbox-26" class="custom" /><label for="checkbox-26">Biting</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="giving-partner"><h3>Oral (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-27" id="checkbox-27" class="custom" /><label for="checkbox-27">Blow Job</label>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-28" id="checkbox-28" class="custom" /><label for="checkbox-28">Ball Sucking</label>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-29" id="checkbox-29" class="custom" /><label for="checkbox-29">Biting</label>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" napartner="checkbox-30" id="checkbox-30" class="custom" /><label for="checkbox-30">Deepthroat</label>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" napartner="checkbox-31" id="checkbox-31" class="custom" /><label for="checkbox-31">Cum on Face</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="bdsm-partner"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-32" id="checkbox-32" class="custom" /><label for="checkbox-32">Spanking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-33" id="checkbox-33" class="custom" /><label for="checkbox-33">Slapping</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-34" id="checkbox-34" class="custom" /><label for="checkbox-34">Choking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-35" id="checkbox-35" class="custom" /><label for="checkbox-35">Blind Fold</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-36" id="checkbox-36" class="custom" /><label for="checkbox-36">Tying Up</label>');
+                    }
+                    else if (localStorage.partner === "female" && localStorage.me === "female") {
+                        
+                        $("#myself").append('<div data-role="collapsible" id="oral-me"><h3>Sex</h3><div data-role="fieldcontain"><fieldset id="controlgroup-sex-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" /><label for="checkbox-1">Pegging (vaginal)</label>');
+                        $("#controlgroup-sex-me").append('<input type="checkbox" name="checkbox-2" id="checkbox-2" class="custom" /><label for="checkbox-2">Pegging (anal)</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="oral-me"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-me").append('<input type="checkbox" name="checkbox-3" id="checkbox-3" class="custom" /><label for="checkbox-3">Eating Out</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="giving-me"><h3>giving (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-giving-me").append('<input type="checkbox" name="checkbox-4" id="checkbox-4" class="custom" /><label for="checkbox-4">Eating Out</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="anal-me"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-5" id="checkbox-5" class="custom" /><label for="checkbox-5">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-6" id="checkbox-6" class="custom" /><label for="checkbox-6">Rimming (giving)</label>');
+                        $("#controlgroup-anal-me").append('<input type="checkbox" name="checkbox-7" id="checkbox-7" class="custom" /><label for="checkbox-7">Toys</label>');
+
+                        $("#myself").append('<div data-role="collapsible" id="bdsm-me"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-me" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-8" id="checkbox-8" class="custom" /><label for="checkbox-8">Spanking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-9" id="checkbox-9" class="custom" /><label for="checkbox-9">Slapping</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-10" id="checkbox-10" class="custom" /><label for="checkbox-10">Choking</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-11" id="checkbox-11" class="custom" /><label for="checkbox-11">Blind Fold</label>');
+                        $("#controlgroup-bdsm-me").append('<input type="checkbox" name="checkbox-12" id="checkbox-12" class="custom" /><label for="checkbox-12">Tying Up</label>');
+
+
+                        $("#partner").append('<div data-role="collapsible" id="oral-partner"><h3>Sex</h3><div data-role="fieldcontain"><fieldset id="controlgroup-sex-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" napartner="checkbox-13" id="checkbox-13" class="custom" /><label for="checkbox-13">Pegging (vaginal)</label>');
+                        $("#controlgroup-sex-partner").append('<input type="checkbox" napartner="checkbox-14" id="checkbox-14" class="custom" /><label for="checkbox-14">Pegging (anal)</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="oral-partner"><h3>Oral (receiving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-oral-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-oral-partner").append('<input type="checkbox" napartner="checkbox-15" id="checkbox-15" class="custom" /><label for="checkbox-15">Eating Out</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="giving-partner"><h3>giving (giving)</h3><div data-role="fieldcontain"><fieldset id="controlgroup-giving-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-giving-partner").append('<input type="checkbox" napartner="checkbox-16" id="checkbox-16" class="custom" /><label for="checkbox-16">Eating Out</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="anal-partner"><h3>Anal</h3><div data-role="fieldcontain"><fieldset id="controlgroup-anal-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-17" id="checkbox-17" class="custom" /><label for="checkbox-17">Rimming (receiving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-18" id="checkbox-18" class="custom" /><label for="checkbox-18">Rimming (giving)</label>');
+                        $("#controlgroup-anal-partner").append('<input type="checkbox" napartner="checkbox-19" id="checkbox-19" class="custom" /><label for="checkbox-19">Toys</label>');
+
+                        $("#partner").append('<div data-role="collapsible" id="bdsm-partner"><h3>BDSM</h3><div data-role="fieldcontain"><fieldset id="controlgroup-bdsm-partner" data-role="controlgroup"></fieldset></div></div>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-20" id="checkbox-20" class="custom" /><label for="checkbox-20">Spanking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-21" id="checkbox-21" class="custom" /><label for="checkbox-21">Slapping</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-22" id="checkbox-22" class="custom" /><label for="checkbox-22">Choking</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-23" id="checkbox-23" class="custom" /><label for="checkbox-23">Blind Fold</label>');
+                        $("#controlgroup-bdsm-partner").append('<input type="checkbox" napartner="checkbox-24" id="checkbox-24" class="custom" /><label for="checkbox-24">Tying Up</label>');
+
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>
